@@ -1,0 +1,24 @@
+stages
+---
+ - stages:
+   stage: a
+   jobs:
+    job: abc
+   displayName: Stage1
+
+
+
+ - stage: b
+   dependsOn: a
+   condition: successed ('a')
+   jobs:
+    job: xyz
+   displayName: Stage2
+
+  
+ - stage: c
+   dependsOn: a
+   condition: failed ('a')
+   jobs:
+    job: zxc
+   displayName: Stage3
